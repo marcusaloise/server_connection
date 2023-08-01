@@ -1,11 +1,14 @@
 #!/bin/bash
 
+
+########################################
 # Lista os srvs disponiveis
 show_servers() {
   echo "Servidores disponíveis:"
   awk -F',' '{print $1 " -" $6}' servers.conf
 }
 
+#########################################
 # Função para conectar no srv solicitado
 connect_server() {
   server_info=$(grep "^$1," servers.conf)
@@ -23,11 +26,14 @@ connect_server() {
   sshpass -p "$password" ssh "$user@$ip" -p "$port"
 }
 
+# Argumentos
 if [ "$#" -eq 0 ]; then
-  echo "Uso: $0 [--show | NOME_DO_SERVIDOR]"
+  echo "$0 [--show]"
   exit 1
 fi
 
+#########################################
+# main
 case $1 in
   --show)
     show_servers
