@@ -16,9 +16,11 @@ connect_server() {
 
   user=$(echo "$server_info" | awk -F',' '{print $2}')
   ip=$(echo "$server_info" | awk -F',' '{print $3}')
+  port=$(echo "$server_info" | awk -F',' '{print $4}')
+  password=$(echo "$server_info" | awk -F',' '{print $5}')
 
   echo "Conectando ao servidor $1..."
-  ssh "$user@$ip"
+  sshpass -p "$password" ssh "$user@$ip" -p "$port"
 }
 
 if [ "$#" -eq 0 ]; then
