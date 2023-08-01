@@ -3,7 +3,7 @@
 # Lista os srvs disponiveis
 show_servers() {
   echo "Servidores disponíveis:"
-  awk -F',' '{print $1}' servers.conf
+  awk -F',' '{print $1 " -" $6}' servers.conf
 }
 
 # Função para conectar no srv solicitado
