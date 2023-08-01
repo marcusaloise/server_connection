@@ -26,9 +26,9 @@ connect_server() {
   sshpass -p "$password" ssh "$user@$ip" -p "$port"
 }
 
-# Argumentos
+# Tratemento de argumentos (--help)
 if [ "$#" -eq 0 ]; then
-  echo "$0 [--show]"
+  echo "$0 [--show | Server_aliass]"
   exit 1
 fi
 
